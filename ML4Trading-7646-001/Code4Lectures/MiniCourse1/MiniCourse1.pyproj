@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>1a2f7760-4b12-4019-9ba1-4ccf6d23648e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Pandas\FetchData.py</StartupFile>
+    <StartupFile>mc1_p2\portfolio\optimization.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -28,7 +28,7 @@
     <Compile Include="mc1_p2\portfolio\analysis.py" />
     <Compile Include="mc1_p2\portfolio\optimization.py" />
     <Compile Include="mc1_p2\portfolio\__init__.py" />
-    <Compile Include="mc1_p2\util.py" />
+    <Compile Include="mc1_p2\portfolio\util.py" />
     <Compile Include="Pandas\FetchData.py">
       <SubType>Code</SubType>
     </Compile>

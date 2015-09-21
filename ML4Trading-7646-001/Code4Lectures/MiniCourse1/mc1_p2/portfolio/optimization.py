@@ -1,4 +1,4 @@
-"""MC1-P2: Optimize a portfolio."""
+﻿"""MC1-P2: Optimize a portfolio."""
 
 import pandas as pd
 import numpy as np
@@ -8,6 +8,8 @@ from analysis import get_portfolio_value, get_portfolio_stats
 
 
 def find_optimal_allocations(prices):
+    weights = np.array(weights)
+    return -statistics(weights,prices)[2]
     """Find optimal allocations for a stock portfolio, optimizing for Sharpe ratio.
 
     Parameters
@@ -22,6 +24,16 @@ def find_optimal_allocations(prices):
     # TODO: Your code here
     return allocs
 
+def statistics(weights,prices):
+    
+    # Get daily portfolio value
+    port_val = get_portfolio_value(prices, weights, start_val)
+    #plot_data(port_val, title="Daily Portfolio Value")
+
+    # Get portfolio statistics (note: std_daily_ret = volatility)
+    cum_ret, avg_daily_ret, std_daily_ret, sharpe_ratio = get_portfolio_stats(port_val)
+
+    return np.array([cum_ret,std_daily_ret, cum_ret / std_daily_ret])
 
 def optimize_portfolio(start_date, end_date, symbols):
     """Simulate and optimize portfolio allocations."""
@@ -35,7 +47,8 @@ def optimize_portfolio(start_date, end_date, symbols):
     allocs = find_optimal_allocations(prices)
     allocs = allocs / np.sum(allocs)  # normalize allocations, if they don't sum to 1.0
 
-    # Get daily portfolio value (already normalized since we use default start_val=1.0)
+    # Get daily portfolio value (already normalized since we use default
+    # start_val=1.0)
     port_val = get_portfolio_value(prices, allocs)
 
     # Get portfolio statistics (note: std_daily_ret = volatility)
