@@ -2,14 +2,34 @@
 
 import pandas as pd
 import numpy as np
+import scipy.optimize as sco
 
 from util import get_data, plot_data
 from analysis import get_portfolio_value, get_portfolio_stats
 
 
-def find_optimal_allocations(prices):
+grets = pd.DataFrame();
+
+def statistics(weights):
     weights = np.array(weights)
-    return -statistics(weights,prices)[2]
+    pret = np.sum(grets.mean() * weights) * 252
+    pvol = np.sqrt(np.dot(weights.T, np.dot(grets.cov() * 252, weights)))
+    return np.array([pret, pvol, pret / pvol])
+
+def min_func_sharpe(weights):
+    return -statistics(weights)[2]
+
+def find_optimal_allocations(prices):
+    noa = len(prices.T)
+    rets = np.log(prices / prices.shift(1))
+    grets = rets
+    weights = np.random.random(noa)
+    weights /= np.sum(weights)
+    cons = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1})
+    bnds = tuple((0,1) for x in range(noa))
+    startparams = noa * [1. / noa]
+    opts = sco.minimize(min_func_sharpe, startparams,method = "SLSQP", bounds = bnds, constraints = cons)
+    allocs = opts['x'].round(3)
     """Find optimal allocations for a stock portfolio, optimizing for Sharpe ratio.
 
     Parameters
@@ -23,17 +43,6 @@ def find_optimal_allocations(prices):
 
     # TODO: Your code here
     return allocs
-
-def statistics(weights,prices):
-    
-    # Get daily portfolio value
-    port_val = get_portfolio_value(prices, weights, start_val)
-    #plot_data(port_val, title="Daily Portfolio Value")
-
-    # Get portfolio statistics (note: std_daily_ret = volatility)
-    cum_ret, avg_daily_ret, std_daily_ret, sharpe_ratio = get_portfolio_stats(port_val)
-
-    return np.array([cum_ret,std_daily_ret, cum_ret / std_daily_ret])
 
 def optimize_portfolio(start_date, end_date, symbols):
     """Simulate and optimize portfolio allocations."""
