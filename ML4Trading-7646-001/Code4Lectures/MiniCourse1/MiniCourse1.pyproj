@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>1a2f7760-4b12-4019-9ba1-4ccf6d23648e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>mc1_p2\portfolio\optimization.py</StartupFile>
+    <StartupFile>mc2_p1\marketsim.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -75,6 +75,7 @@
     <Folder Include="mc2_p1\orders\" />
     <Folder Include="mc2_p1\output\" />
     <Folder Include="mc2_p1\portfolio\" />
+    <Folder Include="orders\" />
     <Folder Include="output\" />
     <Folder Include="portfolio\" />
     <Folder Include="TimeSeries\" />
@@ -1098,6 +1099,10 @@
     <Content Include="mc2_p1\orders\values-short.csv" />
     <Content Include="mc2_p1\output\.gitignore" />
     <Content Include="mc2_p1\output\README" />
+    <Content Include="orders\orders-short.csv" />
+    <Content Include="orders\orders.csv" />
+    <Content Include="orders\orders2.csv" />
+    <Content Include="orders\values-short.csv" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

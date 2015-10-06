@@ -22,6 +22,9 @@ def compute_portvals(start_date, end_date, orders_file, start_val):
         portvals: portfolio value for each trading day from start_date to end_date (inclusive)
     """
     # TODO: Your code here
+
+    orders = pd.read_csv(orders_file)
+
     return portvals
 
 
