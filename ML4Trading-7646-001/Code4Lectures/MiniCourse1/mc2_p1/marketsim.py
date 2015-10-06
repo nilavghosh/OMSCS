@@ -24,16 +24,34 @@ def compute_portvals(start_date, end_date, orders_file, start_val):
     # TODO: Your code here
 
     orders = pd.read_csv(orders_file)
+    dates = pd.date_range(start_date, end_date)
+    symbols = list(set(orders["Symbol"].values))
+    prices_all = get_data(symbols, dates)  # automatically adds SPY
+    
+    prices_netvalue = prices_all.copy()
+    prices_netvalue["Cash"] = start_val;
 
+    for date in dates:
+           orders_on_date =  orders[orders.Date == date._date_repr]
+           for order in orders_on_date:
+               prices_netvalue.ix[date._date_repr,order[Symbol].values[0]]
+           print date
+
+    for price_on_date in prices_netvalue:
+
+
+    print (orders[0])
     return portvals
 
 
 def test_run():
     """Driver function."""
     # Define input parameters
-    start_date = '2011-01-05'
-    end_date = '2011-01-20'
-    orders_file = os.path.join("orders", "orders-short.csv")
+    #start_date = '2011-01-05'
+    #end_date = '2011-01-20'
+    start_date = '2011-01-10'
+    end_date = '2011-12-20'
+    orders_file = os.path.join("orders", "orders.csv")
     start_val = 1000000
 
     # Process orders

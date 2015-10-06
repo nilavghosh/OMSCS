@@ -30,6 +30,7 @@
     <Compile Include="mc1_p2\portfolio\__init__.py" />
     <Compile Include="mc1_p2\portfolio\util.py" />
     <Compile Include="mc2_p1\marketsim.py" />
+    <Compile Include="mc2_p1\mc2_p1.py" />
     <Compile Include="mc2_p1\portfolio\analysis.py" />
     <Compile Include="mc2_p1\portfolio\__init__.py" />
     <Compile Include="mc2_p1\util.py" />
