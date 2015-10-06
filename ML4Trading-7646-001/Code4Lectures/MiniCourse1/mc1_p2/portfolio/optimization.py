@@ -3,26 +3,31 @@
 import pandas as pd
 import numpy as np
 import scipy.optimize as sco
+import matplotlib.pyplot as plt
 
 from util import get_data, plot_data
 from analysis import get_portfolio_value, get_portfolio_stats
 
 
-grets = pd.DataFrame();
+
+gprices = pd.DataFrame()
 
 def statistics(weights):
+    global gprices
     weights = np.array(weights)
-    pret = np.sum(grets.mean() * weights) * 252
-    pvol = np.sqrt(np.dot(weights.T, np.dot(grets.cov() * 252, weights)))
-    return np.array([pret, pvol, pret / pvol])
+    port_val =  get_portfolio_value(gprices, weights)
+    gret = port_val.sum()
+    cum_ret, avg_daily_ret, std_daily_ret, sharpe_ratio = get_portfolio_stats(port_val)
+
+    return np.array([gret, std_daily_ret, sharpe_ratio])
 
 def min_func_sharpe(weights):
     return -statistics(weights)[2]
 
 def find_optimal_allocations(prices):
+    global gprices
     noa = len(prices.T)
-    rets = np.log(prices / prices.shift(1))
-    grets = rets
+    gprices = prices
     weights = np.random.random(noa)
     weights /= np.sum(weights)
     cons = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1})
@@ -84,7 +89,7 @@ def test_run():
     # Define input parameters
     start_date = '2010-01-01'
     end_date = '2010-12-31'
-    symbols = ['GOOG', 'AAPL', 'GLD', 'XOM']  # list of symbols
+    symbols = ['GOOG', 'AAPL', 'GLD', 'HNZ']  # list of symbols
     
     # Optimize portfolio
     optimize_portfolio(start_date, end_date, symbols)

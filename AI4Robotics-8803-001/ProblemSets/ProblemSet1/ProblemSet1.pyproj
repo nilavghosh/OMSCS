@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f0308daa-47ea-448c-b2ba-3799ee4fd811</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>ProblemSet1.py</StartupFile>
+    <StartupFile>ProblemSet4.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,6 +23,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ProblemSet1.py" />
+    <Compile Include="ProblemSet4.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Search\MazeSearch.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Search\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
