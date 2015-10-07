@@ -27,7 +27,7 @@ def compute_portvals(start_date, end_date, orders_file, start_val):
     dates = pd.date_range(start_date, end_date)
     symbols = list(set(orders["Symbol"].values))
     prices_all = get_data(symbols, dates)  # automatically adds SPY
-    
+    prices_all = prices_all[symbols] 
     #prices_netvalue = prices_all[symbols] #.copy()
     #prices_netvalue["Cash"] = start_val
 
@@ -36,44 +36,46 @@ def compute_portvals(start_date, end_date, orders_file, start_val):
     for symbol in symbols:
         netorders[symbol] = 0
 
+    CashRemaining = start_val
+
     for idx,date in enumerate(prices_all.index):
         orders_on_date =  orders[orders.Date == date._date_repr]
-        if(len(orders_on_date.values)) == 0:
+        netorders.ix[date._date_repr] = 0
+        if(date._date_repr != start_date):
             netorders.ix[date._date_repr] = netorders.ix[prices_all.index[idx-1]._date_repr]
         for order in orders_on_date.iterrows():
             buy_or_sell = 1 if order[1]["Order"] == "BUY" else -1
             if date._date_repr == start_date:
                 netorders.ix[date._date_repr,order[1]["Symbol"]] = order[1]["Shares"] * buy_or_sell
-                netorders.ix[date._date_repr,"CashRemaining"] = start order[1]["Shares"] * buy_or_sell
             else:
-                netorders.ix[date._date_repr] = netorders.ix[prices_all.index[idx-1]._date_repr]
+                #netorders.ix[date._date_repr] = netorders.ix[prices_all.index[idx-1]._date_repr]
                 netorders.ix[date._date_repr,order[1]["Symbol"]] += order[1]["Shares"] * buy_or_sell
-
-    prices_netvalue = prices_all[symbols] * netorders
+            CashRemaining -= order[1]["Shares"] * buy_or_sell * prices_all.ix[date._date_repr,order[1]["Symbol"]]
+            netorders.ix[date._date_repr,"CashRemaining"] = CashRemaining
+        #if(date._date_repr != start_date):
+            
+    prices_all["CashRemaining"] = 1      
+    prices_netvalue =  netorders * prices_all
     prices_netvalue["NetHolding"] = prices_netvalue.sum(axis =1)
 
-    i =1
-    #for date in dates:
-    #       orders_on_date =  orders[orders.Date == date._date_repr]
-    #       for order in orders_on_date:
-    #           prices_netvalue.ix[date._date_repr,order[Symbol].values[0]]
-    #       print date
-
-    #for price_on_date in prices_netvalue:
-
-
-    #print (orders[0])
+    portvals = prices_netvalue[["NetHolding"]] 
+   
     return portvals
 
 
 def test_run():
     """Driver function."""
     # Define input parameters
-    start_date = '2011-01-05'
-    end_date = '2011-01-20'
+    #start_date = '2011-01-05'
+    #end_date = '2011-01-20'
+    
     #start_date = '2011-01-10'
     #end_date = '2011-12-20'
-    orders_file = os.path.join("orders", "orders-short.csv")
+    
+    start_date = '2011-01-14'
+    end_date = '2011-12-14'
+    
+    orders_file = os.path.join("orders", "orders2.csv")
     start_val = 1000000
 
     # Process orders
