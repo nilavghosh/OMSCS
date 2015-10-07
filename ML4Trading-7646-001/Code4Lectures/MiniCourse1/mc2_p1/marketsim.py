@@ -28,7 +28,7 @@ def compute_portvals(start_date, end_date, orders_file, start_val):
     symbols = list(set(orders["Symbol"].values))
     prices_all = get_data(symbols, dates)  # automatically adds SPY
     
-    prices_netvalue = prices_all.copy()
+    #prices_netvalue = prices_all[symbols] #.copy()
     #prices_netvalue["Cash"] = start_val
 
     netorders = pd.DataFrame(columns=symbols) # prices_all.copy()
@@ -44,11 +44,14 @@ def compute_portvals(start_date, end_date, orders_file, start_val):
             buy_or_sell = 1 if order[1]["Order"] == "BUY" else -1
             if date._date_repr == start_date:
                 netorders.ix[date._date_repr,order[1]["Symbol"]] = order[1]["Shares"] * buy_or_sell
+                netorders.ix[date._date_repr,"CashRemaining"] = start order[1]["Shares"] * buy_or_sell
             else:
                 netorders.ix[date._date_repr] = netorders.ix[prices_all.index[idx-1]._date_repr]
                 netorders.ix[date._date_repr,order[1]["Symbol"]] += order[1]["Shares"] * buy_or_sell
 
-    prices_netvalue = prices_all * netorders
+    prices_netvalue = prices_all[symbols] * netorders
+    prices_netvalue["NetHolding"] = prices_netvalue.sum(axis =1)
+
     i =1
     #for date in dates:
     #       orders_on_date =  orders[orders.Date == date._date_repr]
