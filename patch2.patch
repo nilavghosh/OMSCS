@@ -1,0 +1,54 @@
+commit bbbbd98fa0bd61370ac249ca05c054209abfce81
+Author: nilavghosh <nilavghosh@gmail.com>
+Date:   Thu Nov 5 19:27:04 2015 +0530
+
+    MC2_P2
+
+diff --git a/ML4Trading-7646-001/Code4Lectures/MiniCourse1/mc2_p2/bollinger_strategy.py b/ML4Trading-7646-001/Code4Lectures/MiniCourse1/mc2_p2/bollinger_strategy.py
+new file mode 100644
+index 0000000..7f38d4b
+--- /dev/null
++++ b/ML4Trading-7646-001/Code4Lectures/MiniCourse1/mc2_p2/bollinger_strategy.py
+@@ -0,0 +1,38 @@
++
++import os
++import pandas as pd
++import matplotlib.pyplot as plt
++
++
++
++def symbol_to_path(symbol, base_dir="data"):
++    """Return CSV file path given ticker symbol."""
++    return os.path.join(base_dir, "{}.csv".format(str(symbol)))
++
++def show_bollinger():
++    start_date = '2007-12-31'
++    end_date = '2009-12-31'
++    dates = pd.date_range(start_date, end_date)
++    symbols = list(set(["IBM"]))
++    prices_all = get_data(symbols, dates)  # automatically adds SPY
++
++
++
++def get_data(symbols, dates, addSPY=True):
++    """Read stock data (adjusted close) for given symbols from CSV files."""
++    df = pd.DataFrame(index=dates)
++    #if addSPY and 'SPY' not in symbols:  # add SPY for reference, if absent
++    #    symbols = ['SPY'] + symbols
++
++    for symbol in symbols:
++        df_temp = pd.read_csv(symbol_to_path(symbol), index_col='Date',
++                parse_dates=True, usecols=['Date', 'Adj Close'], na_values=['nan'])
++        df_temp = df_temp.rename(columns={'Adj Close': symbol})
++        df = df.join(df_temp)
++        if symbol == 'SPY':  # drop dates SPY did not trade
++            df = df.dropna(subset=["SPY"])
++    return df
++
++
++if __name__ == "__main__":
++    show_bollinger()
+\ No newline at end of file
+diff --git a/ML4Trading-7646-001/Code4Lectures/MiniCourse1/mc2_p2/my_strategy.py b/ML4Trading-7646-001/Code4Lectures/MiniCourse1/mc2_p2/my_strategy.py
+new file mode 100644
+index 0000000..e69de29
