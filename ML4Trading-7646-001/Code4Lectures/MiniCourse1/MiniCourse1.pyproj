@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>1a2f7760-4b12-4019-9ba1-4ccf6d23648e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>mc2_p2\bollinger_strategy.py</StartupFile>
+    <StartupFile>mc2_p1\marketsim-SPY.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -29,6 +29,7 @@
     <Compile Include="mc1_p2\portfolio\optimization.py" />
     <Compile Include="mc1_p2\portfolio\__init__.py" />
     <Compile Include="mc1_p2\portfolio\util.py" />
+    <Compile Include="mc2_p1\marketsim-SPY.py" />
     <Compile Include="mc2_p1\marketsim.py" />
     <Compile Include="mc2_p1\portfolio\analysis.py" />
     <Compile Include="mc2_p1\portfolio\__init__.py" />
@@ -1096,15 +1097,22 @@
     <Content Include="data\ZION.csv" />
     <Content Include="data\ZMH.csv" />
     <Content Include="mc1_p2\output\.gitignore" />
+    <Content Include="mc2_p1\orders\orders-mc2-p2.csv" />
     <Content Include="mc2_p1\orders\orders-short.csv" />
     <Content Include="mc2_p1\orders\orders.csv" />
     <Content Include="mc2_p1\orders\orders2.csv" />
     <Content Include="mc2_p1\orders\values-short.csv" />
     <Content Include="mc2_p1\output\.gitignore" />
     <Content Include="mc2_p1\output\README" />
+    <Content Include="orders\orders-mc2-p2.csv" />
     <Content Include="orders\orders-short.csv" />
     <Content Include="orders\orders.csv" />
     <Content Include="orders\orders2.csv" />
+    <Content Include="orders\orders_mc2_p2_newstrategy.csv" />
+    <Content Include="orders\orders_mc2_p2_newstrategy_06_07_NA.csv" />
+    <Content Include="orders\orders_mc2_p2_newstrategy_06_07.csv" />
+    <Content Include="orders\orders_mc2_p2_newstrategy_10_11.csv" />
+    <Content Include="orders\orders_mc2_p2_new_IBM.csv" />
     <Content Include="orders\values-short.csv" />
   </ItemGroup>
   <PropertyGroup>
