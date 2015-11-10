@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f0308daa-47ea-448c-b2ba-3799ee4fd811</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>PID _Smoothing\PController.py</StartupFile>
+    <StartupFile>RunawayRobot\studentMain.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -32,6 +32,9 @@
     <Compile Include="ProblemSet4.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="RunawayRobot\matrix.py" />
+    <Compile Include="RunawayRobot\robot.py" />
+    <Compile Include="RunawayRobot\studentMain.py" />
     <Compile Include="Search\DynamicProgramming.py">
       <SubType>Code</SubType>
     </Compile>
@@ -44,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PID _Smoothing\" />
+    <Folder Include="RunawayRobot\" />
     <Folder Include="Search\" />
   </ItemGroup>
   <PropertyGroup>
