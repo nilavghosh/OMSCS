@@ -102,10 +102,9 @@ class robot:
 #print myrobot.sense()
 #myrobot = myrobot.move(-pi/2, 10.0)
 #print myrobot.sense()
-myrobot = robot()
-myrobot = myrobot.move(0.1, 5.0)
-Z = myrobot.sense()
 
+
+myrobot = robot()
 N = 1000
 p = []
 for i in range(N):
@@ -113,40 +112,34 @@ for i in range(N):
     x.set_noise(0.05, 0.05, 5.0)
     p.append(x)
 
-p2 = []
-for i in range(N):
-    p2.append(p[i].move(0.1, 5.0))
-p = p2
+ax = plt.subplot()
+ax.set_xlim([0,100])
+ax.set_ylim([0,100])
+plt.ion()
 
-w = []
-for i in range(N):
-    w.append(p[i].measurement_prob(Z))
-
-
-#### DON'T MODIFY ANYTHING ABOVE HERE!  ENTER CODE BELOW ####
-# You should make sure that p3 contains a list with particles
-# resampled according to their weights.
-# Also, DO NOT MODIFY p.
-
-cumsum = []
-wtsum = sum(wt for wt in w)
-cumsum.append(w[0] / wtsum)
-
-for i in range(100):
-    p3 = []
-    for i in range(1,N):
-        cumsum.append(cumsum[i - 1] + (w[i] / wtsum))
-            
+for m in range(10):
+    
+    colors = np.random.rand(50)
+    X = []
+    Y = []
+    W = []
     for i in range(N):
-        measurement = random.random()
-        if(measurement < cumsum[0]):
-            p3.append(p[0])
-            continue
-        for j in range(N - 1):
-            if(measurement >= cumsum[j] and measurement < cumsum[j + 1]):
-                p3.append(p[j + 1])
-                break
-    p = p3
+        X.append(p[i].x)
+        Y.append(p[i].y)
+    plt.scatter(X, Y)
+    plt.show(block=False)    
+
+
+
+
+    myrobot = myrobot.move(0.1, 5.0)
+    Z = myrobot.sense()
+    
+    p2 = []
+    for i in range(N):
+        p2.append(p[i].move(0.1, 5.0))
+    p = p2
+    
     w = []
     for i in range(N):
         w.append(p[i].measurement_prob(Z))
@@ -160,19 +153,61 @@ for i in range(100):
     cumsum = []
     wtsum = sum(wt for wt in w)
     cumsum.append(w[0] / wtsum)
+    
+    p3 = []
+    index = int(random.random() * N)
+    beta = 0.0
+    
+    mw = max(w)
+    
+    for i in range(N):
+        beta += random.random() * 2.0 * mw
+        while beta > w[index]:
+            beta -= w[index]
+            index = (index + 1) % N
+        p3.append(p[index])
+    p=p3
+    
+#for i in range(100):
+#    p3 = []
+#    for i in range(1,N):
+#        cumsum.append(cumsum[i - 1] + (w[i] / wtsum))
+            
+#    for i in range(N):
+#        measurement = random.random()
+#        if(measurement < cumsum[0]):
+#            p3.append(p[0])
+#            continue
+#        for j in range(N - 1):
+#            if(measurement >= cumsum[j] and measurement < cumsum[j + 1]):
+#                p3.append(p[j + 1])
+#                break
+#    p = p3
+#    w = []
+#    for i in range(N):
+#        w.append(p[i].measurement_prob(Z))
+    
+    
+#    #### DON'T MODIFY ANYTHING ABOVE HERE!  ENTER CODE BELOW ####
+#    # You should make sure that p3 contains a list with particles
+#    # resampled according to their weights.
+#    # Also, DO NOT MODIFY p.
+    
+#    cumsum = []
+#    wtsum = sum(wt for wt in w)
+#    cumsum.append(w[0] / wtsum)
 
-print myrobot
-#print p3
-colors = np.random.rand(50)
-X = []
-Y = []
-W = []
-for i in range(N):
-    X.append(p3[i].x)
-    Y.append(p3[i].y)
-    W.append(w[i]*20)
-plt.scatter(X, Y)
-plt.show()
+#plt.clf()
+#colors = np.random.rand(50)
+#X = []
+#Y = []
+#W = []
+#for i in range(N):
+#    X.append(p[i].x)
+#    Y.append(p[i].y)
+#    W.append(w[i])
+#plt.scatter(X, Y)
+#plt.show()
 
 
 #import plotly.plotly as py

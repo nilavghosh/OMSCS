@@ -75,7 +75,7 @@ def estimate_next_pos(measurement, OTHER=None):
     xy_estimate = (0,0)
     ctr = -1
     if OTHER is None:
-       OTHER = [[measurement],0,0,0]
+       OTHER = [[measurement],0,0,ctr,0]
        xy_estimate = measurement
     else:
         ctr = OTHER[3]
@@ -90,18 +90,19 @@ def estimate_next_pos(measurement, OTHER=None):
             m0x,m0y = OTHER[0][0]
             m1x,m1y = OTHER[0][1]
             m2x,m2y = OTHER[0][2]
-            angle1 = atan((m1y - m0y) / (m1x - m0x))
-            angle2 = atan((m2y - m1y) / (m2x - m1x))
+            angle1 = atan2((m1y - m0y) , (m1x - m0x))
+            angle2 = atan2((m2y - m1y) , (m2x - m1x))
             angle = angle2 - angle1 
             OTHER[2] = angle
-            x = m2x + OTHER[1] * cos(angle)
-            y = m2y + OTHER[1] * sin(angle)
+            OTHER[4] = angle1 - angle
+            x = m2x + OTHER[1] * cos(angle*(ctr+2)+OTHER[4])
+            y = m2y + OTHER[1] * sin(angle*(ctr+2)+OTHER[4])
             xy_estimate = (x,y)
         if(ctr > 1):
             angle = OTHER[2]
             mx,my = measurement
-            x = mx + OTHER[1] * cos(angle)
-            y = my + OTHER[1] * sin(angle)
+            x = mx + OTHER[1] * cos(angle*(ctr+2) + OTHER[4])
+            y = my + OTHER[1] * sin(angle*(ctr+2) + OTHER[4])
             xy_estimate = (x,y)
     ctr += 1
     OTHER[3] = ctr
@@ -156,8 +157,7 @@ def naive_next_pos(measurement, OTHER=None):
 
 # This is how we create a target bot.  Check the robot.py file to understand
 # How the robot class behaves.
-test_target = robot(2.1, 4.3, 0.0, 2 * pi / 34.0, 1.5)
-#test_target = robot(2.1, 4.3, 0.5, 2 * pi / 34.0, 1.5)
+test_target = robot(2.1, 4.3, 0.5, 2 * pi / 34, 1.5)
 test_target.set_noise(0.0, 0.0, 0.0)
 
 # demo_grading(naive_next_pos, test_target)

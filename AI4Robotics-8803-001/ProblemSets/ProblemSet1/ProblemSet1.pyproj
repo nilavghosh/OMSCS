@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f0308daa-47ea-448c-b2ba-3799ee4fd811</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>RunawayRobot\studentMain.py</StartupFile>
+    <StartupFile>KalmanFilter\PS2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,7 +22,14 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="KalmanFilter\PS2.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Particle Filters\PS3.py" />
+    <Compile Include="Particle Filters\Quizzes\robot.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Particle Filters\Resampling2.py" />
     <Compile Include="Particle Filters\Resampling.py" />
     <Compile Include="PID _Smoothing\PController.py">
       <SubType>Code</SubType>
@@ -34,9 +41,12 @@
     <Compile Include="ProblemSet4.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="RunawayRobot\matrix.py" />
-    <Compile Include="RunawayRobot\robot.py" />
-    <Compile Include="RunawayRobot\studentMain.py" />
+    <Compile Include="RunawayRobot\One\matrix.py" />
+    <Compile Include="RunawayRobot\One\robot.py" />
+    <Compile Include="RunawayRobot\One\studentMain.py" />
+    <Compile Include="RunawayRobot\Two\studentMain.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Search\DynamicProgramming.py">
       <SubType>Code</SubType>
     </Compile>
@@ -48,9 +58,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="KalmanFilter\" />
     <Folder Include="Particle Filters\" />
+    <Folder Include="Particle Filters\Quizzes\" />
     <Folder Include="PID _Smoothing\" />
     <Folder Include="RunawayRobot\" />
+    <Folder Include="RunawayRobot\Two\" />
+    <Folder Include="RunawayRobot\One\" />
     <Folder Include="Search\" />
   </ItemGroup>
   <PropertyGroup>

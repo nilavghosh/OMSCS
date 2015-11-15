@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>1a2f7760-4b12-4019-9ba1-4ccf6d23648e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>mc2_p1\marketsim-SPY.py</StartupFile>
+    <StartupFile>mc3_p1\testlearner.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -36,6 +36,24 @@
     <Compile Include="mc2_p1\util.py" />
     <Compile Include="mc2_p2\bollinger_strategy.py" />
     <Compile Include="mc2_p2\my_strategy.py" />
+    <Compile Include="Mc3_p1\3Dplotsample.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mc3_p1\BagLearner.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mc3_p1\best4KNN.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mc3_p1\KNNLearner.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="mc3_p1\LinRegLearner.py" />
+    <Compile Include="Mc3_p1\best4linreg.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="mc3_p1\testlearner.py" />
+    <Compile Include="mc3_p1\__init__.py" />
     <Compile Include="Pandas\FetchData.py">
       <SubType>Code</SubType>
     </Compile>
@@ -79,6 +97,8 @@
     <Folder Include="mc2_p1\output\" />
     <Folder Include="mc2_p1\portfolio\" />
     <Folder Include="mc2_p2\" />
+    <Folder Include="Mc3_p1\" />
+    <Folder Include="mc3_p1\Data\" />
     <Folder Include="orders\" />
     <Folder Include="output\" />
     <Folder Include="portfolio\" />
@@ -1104,6 +1124,12 @@
     <Content Include="mc2_p1\orders\values-short.csv" />
     <Content Include="mc2_p1\output\.gitignore" />
     <Content Include="mc2_p1\output\README" />
+    <Content Include="mc3_p1\Data\best4KNN.csv" />
+    <Content Include="mc3_p1\Data\3_groups.csv" />
+    <Content Include="mc3_p1\Data\best4linreg.csv" />
+    <Content Include="mc3_p1\Data\ripple - Copy.csv" />
+    <Content Include="mc3_p1\Data\ripple.csv" />
+    <Content Include="mc3_p1\Data\simple.csv" />
     <Content Include="orders\orders-mc2-p2.csv" />
     <Content Include="orders\orders-short.csv" />
     <Content Include="orders\orders.csv" />
