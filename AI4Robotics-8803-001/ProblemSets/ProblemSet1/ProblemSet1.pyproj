@@ -22,6 +22,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Final Project\finalproject.py" />
+    <Compile Include="Final Project\turtleHelp.py" />
+    <Compile Include="Final Project\turtlekitnter.py" />
+    <Compile Include="KalmanFilter\LinearKalmanFilter.py" />
     <Compile Include="KalmanFilter\PS2.py">
       <SubType>Code</SubType>
     </Compile>
@@ -41,9 +45,12 @@
     <Compile Include="ProblemSet4.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="RunawayRobot\matrix.py" />
     <Compile Include="RunawayRobot\One\matrix.py" />
     <Compile Include="RunawayRobot\One\robot.py" />
     <Compile Include="RunawayRobot\One\studentMain.py" />
+    <Compile Include="RunawayRobot\robot.py" />
+    <Compile Include="RunawayRobot\studentMain.py" />
     <Compile Include="RunawayRobot\Two\matrix.py" />
     <Compile Include="RunawayRobot\Two\robot.py" />
     <Compile Include="RunawayRobot\Two\studentMain.py">
@@ -63,6 +70,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Final Project\" />
     <Folder Include="KalmanFilter\" />
     <Folder Include="Particle Filters\" />
     <Folder Include="Particle Filters\Quizzes\" />
@@ -71,6 +79,11 @@
     <Folder Include="RunawayRobot\Two\" />
     <Folder Include="RunawayRobot\One\" />
     <Folder Include="Search\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Final Project\test01.txt" />
+    <Content Include="RunawayRobot\matrix.pyc" />
+    <Content Include="RunawayRobot\robot.pyc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
