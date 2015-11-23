@@ -44,7 +44,12 @@
     <Compile Include="RunawayRobot\One\matrix.py" />
     <Compile Include="RunawayRobot\One\robot.py" />
     <Compile Include="RunawayRobot\One\studentMain.py" />
+    <Compile Include="RunawayRobot\Two\matrix.py" />
+    <Compile Include="RunawayRobot\Two\robot.py" />
     <Compile Include="RunawayRobot\Two\studentMain.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RunawayRobot\Two\studentMain_b.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Search\DynamicProgramming.py">
