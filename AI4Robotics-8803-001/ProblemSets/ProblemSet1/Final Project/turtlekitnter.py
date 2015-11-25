@@ -1,6 +1,7 @@
 import Tkinter
 import turtle
 from Tkinter import *
+import os
 
 def run_turtles(*args):
     for t, d in args:
@@ -12,7 +13,7 @@ def run_robot(bot):
     
 
 
-filename = "C:\\test01.txt"
+filename = os.getcwd() + "\\" + "Final Project\\test01.txt"
 lines = open(filename, 'r').readlines()
 count=1
 scale = 3
@@ -25,7 +26,7 @@ def show_movement():
     x, y = lines[count].split(',')
     x = int(x)
     y = int(y)
-    turtle1.goto(x/scale,y/scale)
+    turtle1.goto(x/scale-400,y/scale-400)
     count = count + 1
     if(count < len(lines)):
         root.after_idle(show_movement)
@@ -52,8 +53,8 @@ turtle2.color('red')
 
 turtle1.ht(); turtle1.pu()
 x, y = lines[0].split(',')
-x = int(x)
-y = int(y)
+x = int(x)/scale
+y = int(y)/scale
 turtle1.setx(x/scale)
 turtle1.sety(y/scale)
 #Kturtle1.left(90); turtle1.fd(250); turtle1.lt(90)

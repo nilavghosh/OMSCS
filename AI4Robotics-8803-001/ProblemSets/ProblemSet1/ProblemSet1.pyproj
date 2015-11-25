@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f0308daa-47ea-448c-b2ba-3799ee4fd811</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>KalmanFilter\PS2.py</StartupFile>
+    <StartupFile>Final Project\turtlekitnter.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
