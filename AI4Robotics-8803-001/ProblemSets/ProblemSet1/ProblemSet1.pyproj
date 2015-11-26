@@ -23,9 +23,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Final Project\finalproject.py" />
+    <Compile Include="Final Project\matrix.py" />
+    <Compile Include="Final Project\MDimKalmanFilter.py" />
     <Compile Include="Final Project\turtleHelp.py" />
     <Compile Include="Final Project\turtlekitnter.py" />
     <Compile Include="KalmanFilter\LinearKalmanFilter.py" />
+    <Compile Include="KalmanFilter\matrix.py" />
+    <Compile Include="KalmanFilter\MDimKalmanFilter.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="KalmanFilter\PS2.py">
       <SubType>Code</SubType>
     </Compile>
