@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>1a2f7760-4b12-4019-9ba1-4ccf6d23648e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>mc3_p1\testlearner.py</StartupFile>
+    <StartupFile>mc3_p2\code.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -54,6 +54,17 @@
     </Compile>
     <Compile Include="mc3_p1\testlearner.py" />
     <Compile Include="mc3_p1\__init__.py" />
+    <Compile Include="mc3_p2\code - with comments.py" />
+    <Compile Include="mc3_p2\code.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="mc3_p2\KNNLearner.py" />
+    <Compile Include="mc3_p2\pandasSample.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="mc3_p2\simplePlot.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Pandas\FetchData.py">
       <SubType>Code</SubType>
     </Compile>
@@ -99,6 +110,7 @@
     <Folder Include="mc2_p2\" />
     <Folder Include="Mc3_p1\" />
     <Folder Include="mc3_p1\Data\" />
+    <Folder Include="mc3_p2\" />
     <Folder Include="orders\" />
     <Folder Include="output\" />
     <Folder Include="portfolio\" />
@@ -1130,6 +1142,12 @@
     <Content Include="mc3_p1\Data\ripple - Copy.csv" />
     <Content Include="mc3_p1\Data\ripple.csv" />
     <Content Include="mc3_p1\Data\simple.csv" />
+    <Content Include="orders\ml_mc3_p2.csv" />
+    <Content Include="orders\ml_mc3_p2_IBM.csv" />
+    <Content Include="orders\ml_mc3_p2_IBM_test.csv" />
+    <Content Include="orders\ml_mc3_p2_IBM_test2.csv" />
+    <Content Include="orders\ml_mc3_p2_IBM_test_novol.csv" />
+    <Content Include="orders\ml_mc3_p2_test.csv" />
     <Content Include="orders\orders-mc2-p2.csv" />
     <Content Include="orders\orders-short.csv" />
     <Content Include="orders\orders.csv" />

@@ -71,10 +71,10 @@ def test_run():
     #start_date = '2011-01-10'
     #end_date = '2011-12-20'
     
-    start_date = '2009-12-31'
-    end_date = '2011-12-31'
+    start_date = '2010-1-1'
+    end_date = '2010-12-31'
     
-    orders_file = os.path.join("orders", "orders_mc2_p2_newstrategy_10_11.csv")
+    orders_file = os.path.join("orders", "ml_mc3_p2_IBM_test.csv")
     start_val = 10000
 
     # Process orders

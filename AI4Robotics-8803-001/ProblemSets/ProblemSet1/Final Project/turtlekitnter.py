@@ -10,7 +10,7 @@ u = matrix([[0.], [0.], [0], [0]]) # external motion
 F = matrix([[1., 1, 0, 0], [0,1.,0,0], [0,0,1,1], [0,0,0,1]]) # next state function
 B = matrix([[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]])
 H = matrix([[1., 0,0,0],[0,0,1,0]]) #measurement function
-R = matrix([[0.001,0],[0.0,0.001]]) # measurement uncertainty
+R = matrix([[0.00001,0],[0.0,0.00001]]) # measurement uncertainty
 I = matrix([[1., 0.,0,0], [0., 1,0,0],[0., 0,1,0],[0, 0,0,1]]) # identity matrix
 
 
@@ -35,6 +35,7 @@ root = Tkinter.Tk()
 root.withdraw()
 
 def show_movement():
+    turtle3.ht(); turtle3.pu()
     global count,scale, ix,P, u, F, B, H, R, I
     x, y = lines[count].split(',')
     x = int(x)/scale-400
@@ -53,6 +54,11 @@ def show_movement():
     ix = (F * ix) + (B * u)
     P = F * P * F.transpose()
     turtle2.goto(ix.value[0][0],ix.value[2][0])
+    turtle3.setx(ix.value[0][0])
+    turtle3.sety(ix.value[2][0])
+    turtle3.st(); turtle3.pd()
+    turtle3.goto(0,0)
+    
     #print 'x= '
     #ix.show()
 
@@ -90,6 +96,9 @@ turtle1 = turtle.RawTurtle(canvas)
 turtle1.color('blue')
 turtle2 = turtle.RawTurtle(canvas)
 turtle2.color('red')
+turtle3 = turtle.RawTurtle(canvas)
+turtle3.color('black')
+turtle3.ht(); turtle3.pu()
 
 turtle1.ht(); turtle1.pu()
 x, y = lines[0].split(',')

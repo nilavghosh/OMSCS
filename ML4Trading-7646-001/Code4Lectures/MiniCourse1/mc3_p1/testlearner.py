@@ -24,7 +24,7 @@ if __name__=="__main__":
 
     for b in range(1,21):
         # create a learner and train it
-        #learner = knn.KNNLearner(1) # create a LinRegLearner
+        #learner = knn.KNNLearner(1) # create a KNNLearner
         #learner = lrl.LinRegLearner() # create a LinRegLearner
         learner = bgl.BagLearner(learner = knn.KNNLearner, kwargs = {"k":1}, bags = b, boost = False)
         learner.addEvidence(trainX, trainY) # train it
